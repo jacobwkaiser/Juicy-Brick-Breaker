@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://btc5kcsbtrjqp"]
+
+[ext_resource type="FontFile" uid="uid://b4btva87ayn60" path="res://Assets/rhuma_sinera/Rhuma Sinera Regular.ttf" id="1_j8hss"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svb2f"]
+bg_color = Color(0.677225, 0.238857, 0.999997, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.529412, 0, 0.694118, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7xm7"]
+bg_color = Color(0.729412, 0.427451, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.576471, 0.352941, 1, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf6vp"]
+bg_color = Color(0.639216, 0.00392157, 0.984314, 0.756863)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.733333, 0.00392157, 0.984314, 0.6)
+shadow_size = 5
+
+[resource]
+default_font = ExtResource("1_j8hss")
+default_font_size = 63
+Button/styles/hover = SubResource("StyleBoxFlat_svb2f")
+Button/styles/normal = SubResource("StyleBoxFlat_y7xm7")
+Button/styles/pressed = SubResource("StyleBoxFlat_hf6vp")
+Label/styles/normal = null
