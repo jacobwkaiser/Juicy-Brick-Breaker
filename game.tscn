@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=17 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://do7pdpjxteg8e" path="res://UI/HUD.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://r1nm10jeqyta" path="res://UI/Instructions.tscn" id="8"]
 [ext_resource type="Script" path="res://Effects/Fever.gd" id="9"]
+[ext_resource type="AudioStream" uid="uid://bcwou4h7ohrat" path="res://Assets/jacob_kaiser_soundtrack_video_game.mp3" id="10_wfi6m"]
+[ext_resource type="AudioStream" uid="uid://cipn7y1tajium" path="res://Assets/jump_c_02-102843.mp3" id="11_kj18l"]
+[ext_resource type="AudioStream" uid="uid://30avy31n55bk" path="res://Assets/pixel-death-66829.mp3" id="12_ce0qw"]
+[ext_resource type="AudioStream" uid="uid://813n3vmllok1" path="res://Assets/cartoon-jump-6462.mp3" id="13_w873g"]
+[ext_resource type="AudioStream" uid="uid://bdmmp8otdmmc6" path="res://Assets/tennis-smash-100733.mp3" id="14_8csbj"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(200, 1000)
@@ -75,9 +80,25 @@ visible = false
 [node name="Pause_Menu" parent="UI" instance=ExtResource("5")]
 process_mode = 3
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_wfi6m")
+volume_db = -6.584
+autoplay = true
+
+[node name="Wall_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kj18l")
+
+[node name="Die_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ce0qw")
+
+[node name="Brick_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_w873g")
+
+[node name="Paddle_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_8csbj")
+volume_db = -8.432
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]
