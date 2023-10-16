@@ -1,7 +1,15 @@
-[gd_scene format=3 uid="uid://dywcp8o4vsibs"]
+[gd_scene load_steps=2 format=3 uid="uid://dywcp8o4vsibs"]
+
+[ext_resource type="Texture2D" uid="uid://bsnnm6s5lrwx0" path="res://Assets/PNG/60-Breakout-Tiles.png" id="1_advyh"]
 
 [node name="Indicator" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 10.0
 offset_bottom = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_advyh")
+centered = false

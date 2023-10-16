@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=22 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
+[ext_resource type="Shader" path="res://Effects/game.gdshader" id="2_ro4gw"]
 [ext_resource type="Script" path="res://Ball/Ball_Container.gd" id="3"]
+[ext_resource type="Script" path="res://Effects/Background.gd" id="3_tn7mr"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://ci5q3vmuimsfr" path="res://UI/Pause_Menu.tscn" id="5"]
 [ext_resource type="Script" path="res://Wall/Wall.gd" id="6"]
@@ -14,6 +16,15 @@
 [ext_resource type="AudioStream" uid="uid://30avy31n55bk" path="res://Assets/pixel-death-66829.mp3" id="12_ce0qw"]
 [ext_resource type="AudioStream" uid="uid://813n3vmllok1" path="res://Assets/cartoon-jump-6462.mp3" id="13_w873g"]
 [ext_resource type="AudioStream" uid="uid://bdmmp8otdmmc6" path="res://Assets/tennis-smash-100733.mp3" id="14_8csbj"]
+[ext_resource type="Texture2D" uid="uid://c3fdrictd1dcw" path="res://Assets/vivid-blurred-colorful-background.jpg" id="16_ajnj5"]
+[ext_resource type="Script" path="res://Effects/Camera.gd" id="18_kvx2d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hsen"]
+shader = ExtResource("2_ro4gw")
+shader_parameter/TWOPI = 6.28319
+shader_parameter/NUM_EXPLOSIONS = 8.0
+shader_parameter/NUM_PARTICLES = 70.0
+shader_parameter/MOD3 = Vector3(0.1031, 0.11369, 0.13787)
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(200, 1000)
@@ -23,6 +34,20 @@ size = Vector2(1224, 200)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3hsen")
+use_parent_material = true
+offset_right = 1175.0
+offset_bottom = 800.0
+color = Color(0.333333, 0.333333, 0.333333, 1)
+script = ExtResource("3_tn7mr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(575, 388)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_ajnj5")
 
 [node name="Wall_Container" type="Node2D" parent="."]
 
@@ -100,5 +125,9 @@ stream = ExtResource("13_w873g")
 [node name="Paddle_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_8csbj")
 volume_db = -8.432
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("18_kvx2d")
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]

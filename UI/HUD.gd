@@ -30,5 +30,6 @@ func update_lives():
 func update_fever():
 	$Fever.value = Global.fever
 
+
 func _on_Timer_timeout():
 	Global.update_time(-1)

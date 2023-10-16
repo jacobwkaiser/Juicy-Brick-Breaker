@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr50duubwf50c"]
+[gd_scene load_steps=5 format=3 uid="uid://dr50duubwf50c"]
 
 [ext_resource type="Script" path="res://Ball/Ball.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dxvgsn3exawiv" path="res://Assets/PNG/58-Breakout-Tiles.png" id="2_olpf6"]
 
 [sub_resource type="PhysicsMaterial" id="2"]
 friction = 0.0
@@ -18,12 +19,15 @@ script = ExtResource("1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_olpf6")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_Ball_body_entered"]
