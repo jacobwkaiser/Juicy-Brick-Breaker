@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpbcasdx7dl4x"]
+[gd_scene load_steps=5 format=3 uid="uid://dpbcasdx7dl4x"]
 
 [ext_resource type="Script" path="res://UI/End_Game.gd" id="1"]
 [ext_resource type="Theme" uid="uid://btc5kcsbtrjqp" path="res://UI/theme1.tres" id="1_oufi5"]
+[ext_resource type="Shader" path="res://Effects/End_Game.gdshader" id="3_on0ir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lp2n"]
+shader = ExtResource("3_on0ir")
+shader_parameter/current_mana = 0.5
+shader_parameter/max_mana = 1.0
+shader_parameter/rank_advance_mana = 1.0
+shader_parameter/inset = 0.8
+shader_parameter/groove_opacity = 0.5
+shader_parameter/groove_speed = 0.1
+shader_parameter/groove_width = 0.075
+shader_parameter/groove_distance = 0.3
+shader_parameter/border_color = null
+shader_parameter/border_width = 0.1
+shader_parameter/border_speed = 0.02
+shader_parameter/glow_strength = 0.5
+shader_parameter/mana_color = null
 
 [node name="End_Game" type="Control"]
 layout_mode = 3
@@ -13,10 +30,19 @@ grow_vertical = 2
 theme = ExtResource("1_oufi5")
 script = ExtResource("1")
 
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0lp2n")
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 801.0
+color = Color(0.333333, 0.333333, 0.333333, 0.333333)
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "GAME OVER!"
+text = "GAME OVER!
+TRY AGAIN FOR A HIGHER
+SCORE!"
 horizontal_alignment = 1
 vertical_alignment = 1
