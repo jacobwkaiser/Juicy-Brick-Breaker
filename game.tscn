@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=25 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
@@ -7,12 +7,14 @@
 [ext_resource type="Script" path="res://Effects/Background.gd" id="3_tn7mr"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://ci5q3vmuimsfr" path="res://UI/Pause_Menu.tscn" id="5"]
+[ext_resource type="Script" path="res://Ball/Comet_Container.gd" id="5_l6yst"]
 [ext_resource type="Script" path="res://Wall/Wall.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://do7pdpjxteg8e" path="res://UI/HUD.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://r1nm10jeqyta" path="res://UI/Instructions.tscn" id="8"]
 [ext_resource type="Script" path="res://Effects/Fever.gd" id="9"]
 [ext_resource type="AudioStream" uid="uid://bcwou4h7ohrat" path="res://Assets/jacob_kaiser_soundtrack_video_game.mp3" id="10_wfi6m"]
 [ext_resource type="AudioStream" uid="uid://cipn7y1tajium" path="res://Assets/jump_c_02-102843.mp3" id="11_kj18l"]
+[ext_resource type="Texture2D" uid="uid://ba0ib8luicpue" path="res://Assets/kenney_particle-pack/PNG (Transparent)/fire_01.png" id="11_l7hhd"]
 [ext_resource type="AudioStream" uid="uid://30avy31n55bk" path="res://Assets/pixel-death-66829.mp3" id="12_ce0qw"]
 [ext_resource type="AudioStream" uid="uid://813n3vmllok1" path="res://Assets/cartoon-jump-6462.mp3" id="13_w873g"]
 [ext_resource type="AudioStream" uid="uid://bdmmp8otdmmc6" path="res://Assets/tennis-smash-100733.mp3" id="14_8csbj"]
@@ -30,15 +32,23 @@ shader_parameter/MOD3 = Vector3(0.1031, 0.11369, 0.13787)
 size = Vector2(200, 1000)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(1224, 200)
+size = Vector2(1251, 200)
+
+[sub_resource type="Curve" id="Curve_p4hx8"]
+min_value = -1.0
+_data = [Vector2(0.010989, -0.91579), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
 
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("5_l6yst")
+
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_3hsen")
 use_parent_material = true
-offset_right = 1175.0
+offset_right = 1150.0
 offset_bottom = 800.0
 color = Color(0.333333, 0.333333, 0.333333, 1)
 script = ExtResource("3_tn7mr")
@@ -55,6 +65,8 @@ texture = ExtResource("16_ajnj5")
 script = ExtResource("6")
 
 [node name="ColorRect" type="ColorRect" parent="Wall_Container/Wall_Left"]
+offset_right = 4.0
+offset_bottom = 1250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Container/Wall_Left"]
 position = Vector2(-90, 400)
@@ -65,6 +77,9 @@ position = Vector2(1152, 2.08165e-12)
 script = ExtResource("6")
 
 [node name="ColorRect" type="ColorRect" parent="Wall_Container/Wall_Right"]
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 1250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Container/Wall_Right"]
 position = Vector2(90, 400)
@@ -74,9 +89,11 @@ shape = SubResource("1")
 script = ExtResource("6")
 
 [node name="ColorRect" type="ColorRect" parent="Wall_Container/Wall_Top"]
+offset_right = 1250.0
+offset_bottom = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Container/Wall_Top"]
-position = Vector2(512, -90)
+position = Vector2(525.5, -90)
 shape = SubResource("2")
 
 [node name="Brick_Container" type="Node2D" parent="."]
@@ -96,6 +113,12 @@ script = ExtResource("3")
 script = ExtResource("9")
 
 [node name="Timer" type="Timer" parent="Fever"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Fever"]
+visible = false
+texture = ExtResource("11_l7hhd")
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_p4hx8")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

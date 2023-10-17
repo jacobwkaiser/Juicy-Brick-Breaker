@@ -9,6 +9,15 @@ var released = true
 
 var initial_velocity = Vector2.ZERO
 
+
+func comet():
+	var comet_container = get_node_or_null("/root/Game/Comet_Container")
+	if comet_container != null:
+		var sprite = $Images/Sprite.duplicate()
+		sprite.global_position = global_position
+		sprite.modulate.s = 0.6
+		comet_container.add_child(sprite)
+
 func _ready():
 	contact_monitor = true
 	max_contacts_reported = 8

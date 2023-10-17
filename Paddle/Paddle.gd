@@ -37,6 +37,7 @@ func hit(_ball):
 	var paddle_sound = get_node_or_null("/root/Game/Paddle_Sound")
 	if paddle_sound != null:
 		paddle_sound.play()
+	$Ppaddle.emitting = true
 
 func powerup(payload):
 	for c in $Powerups.get_children():
