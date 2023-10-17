@@ -7,7 +7,20 @@ Description
 
 ## Implementation
 
-Which features you included
+-Menu
+-Particles
+-End Screen
+-Music
+-Sounds
+-Screen shake
+-Ball Trail
+-Shaders
+-hit effects
+-Custom sprites
+-Custom Theme
+-Face
+More
+
 
 
 ## References
