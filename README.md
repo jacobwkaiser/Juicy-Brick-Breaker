@@ -1,8 +1,7 @@
 # Project Name
 
-Context and date
-
-Description
+Juicy Brick Breaker Project for MSCH C220
+September 27th 2023
 
 
 ## Implementation
@@ -24,9 +23,11 @@ More
 
 
 ## References
+Built Using free assets that had no credit requirements
 
 
 ## Future Development
+may work on this project and fix things in the future
 
 
 ## Created by
